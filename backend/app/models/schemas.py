@@ -2,7 +2,7 @@
 Pydantic models for request/response validation
 """
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Any
 from datetime import datetime
 from enum import Enum
 
@@ -33,7 +33,7 @@ class PatientSymptoms(BaseModel):
 class DiagnosisResult(BaseModel):
     """Model for diagnosis result"""
     diagnosis_id: str
-    possible_conditions: List[Dict[str, any]]
+    possible_conditions: List[Dict[str, Any]]
     confidence_score: float = Field(..., ge=0, le=1)
     reasoning: str
     icd10_codes: List[str]

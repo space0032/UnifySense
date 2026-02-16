@@ -16,9 +16,9 @@ patient_records = {}
 async def create_patient(
     age: int,
     gender: str,
-    medical_history: list[str] = [],
-    current_medications: list[str] = [],
-    allergies: list[str] = []
+    medical_history: Optional[list[str]] = None,
+    current_medications: Optional[list[str]] = None,
+    allergies: Optional[list[str]] = None
 ):
     """
     Create a new patient record
@@ -41,9 +41,9 @@ async def create_patient(
             patient_id=patient_id,
             age=age,
             gender=gender,
-            medical_history=medical_history,
-            current_medications=current_medications,
-            allergies=allergies,
+            medical_history=medical_history or [],
+            current_medications=current_medications or [],
+            allergies=allergies or [],
             created_at=now,
             updated_at=now
         )
